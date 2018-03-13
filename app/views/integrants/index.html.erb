@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<div class="labelm"><h1>Integrantes</h1></div><br>
+<div class="container">
+<table class="table"> 
+  <thead>
+    <tr>
+      <th><div class="label">Username</div></th>
+      
+      <th><div class="label">Nombre</div></th>
+      <th><div class="label">Email</div></th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @integrants.each do |integrant| %>
+      <tr>
+        <td><div class="labelb"><%= integrant.username %></div></td>
+        <td><div class="labelb"><%= integrant.name %></div></td>
+        <td><div class="labelb"><%= integrant.email %></div></td>
+        <td><div class="labelb"><%= link_to 'Ver', integrant %></td>
+        <td><div class="labelb"><%= link_to 'Editar', edit_integrant_path(integrant) %></div></td>
+        <td><div class="labelb"><%= link_to 'Eliminar', integrant, method: :delete, data: { confirm: 'Are you sure?' } %></div></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<div class="label1"><%= link_to 'Nuevo Integrante', new_integrant_path %></div>

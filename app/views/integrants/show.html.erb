@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<div class="container">          
+  <table class="table">
+   <thead>
+      <tr>
+        <th><div class="label">Username</div></th>
+        <th><div class="label">Contraseña</div></th>
+        <th><div class="label">Nombre</div></th>
+        <th><div class="label">Email</div></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><div class="labelb"><%= @integrant.username %></div></td>
+        <td><div class="labelb"><%= @integrant.password %></div></td>
+        <td><div class="labelb"><%= @integrant.name %></div></td>
+        <td><div class="labelb"><%= @integrant.email %></div></td>
+</tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+
+<div class="label1"><%= link_to 'Editar', edit_integrant_path(@integrant) %> |
+<%= link_to 'Regresar', integrants_path %></div>

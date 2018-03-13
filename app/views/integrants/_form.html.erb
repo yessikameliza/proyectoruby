@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="panel-groupb">
+    <div class="panel panel-info">
+      <div class="panel-heading"><div class="labela"><h4>Integrantes</h4>
+      </div>
+      </div>
+      <div class="panel-body">
+
+<%= form_with(model: integrant, local: true) do |form| %>
+  <% if integrant.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(integrant.errors.count, "error") %> prohibited this integrant from being saved:</h2>
+
+      <ul>
+      <% integrant.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <%= form.label :Username %>
+     <div class="fielda">
+    <%= form.text_field :username, id: :integrant_username %>
+  </div>
+
+    <%= form.label :Contraseña %>
+     <div class="fielda">
+    <%= form.text_field :password, id: :integrant_password %>
+  </div>
+
+    <%= form.label :Nombre %>
+     <div class="fielda">
+    <%= form.text_field :name, id: :integrant_name %>
+  </div>
+
+    <%= form.label :Email %>
+     <div class="fielda">
+    <%= form.text_field :email, id: :integrant_email %>
+  </div><br>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+  </div>
+<% end %>
+</div>
+ </div>
+ </div>
+ </div>
