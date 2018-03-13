@@ -4,7 +4,8 @@ class IntegrantsController < ApplicationController
   # GET /integrants
   # GET /integrants.json
   def index
-    @integrants = Integrant.all
+    @project = Project.find(params[:project_id])
+    @integrants = User.all
   end
 
   # GET /integrants/1
