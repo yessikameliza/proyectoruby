@@ -6,37 +6,27 @@
       </div>
       <div class="panel-body">
 
-<%= form_with(model: integrant, local: true) do |form| %>
-  <% if integrant.errors.any? %>
+<%= form_with(model: user, local: true) do |form| %>
+  <% if user.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(integrant.errors.count, "error") %> prohibited this integrant from being saved:</h2>
+      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
       <ul>
-      <% integrant.errors.full_messages.each do |message| %>
+      <% user.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
 
-    <%= form.label :Username %>
-     <div class="fielda">
-    <%= form.text_field :username, id: :integrant_username %>
-  </div>
-
-    <%= form.label :Contraseña %>
-     <div class="fielda">
-    <%= form.text_field :password, id: :integrant_password %>
-  </div>
-
-    <%= form.label :Nombre %>
-     <div class="fielda">
-    <%= form.text_field :name, id: :integrant_name %>
-  </div>
-
     <%= form.label :Email %>
      <div class="fielda">
-    <%= form.text_field :email, id: :integrant_email %>
+    <%= form.text_field :email, id: :user_email %>
+  </div>
+    <%= hidden_field_tag :project_id, @project.id %>  
+    <%= form.label :Contraseña %>
+     <div class="fielda">
+    <%= form.text_field :encrypted_password, id: :user_encrypted_password %>
   </div><br>
 
   <div class="actions">
@@ -47,4 +37,4 @@
 </div>
  </div>
  </div>
- </div>
+

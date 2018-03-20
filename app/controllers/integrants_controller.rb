@@ -11,22 +11,25 @@ class IntegrantsController < ApplicationController
   # GET /integrants/1
   # GET /integrants/1.json
   def show
+    @project = @integrant.project
   end
 
   # GET /integrants/new
   def new
-    @integrant = Integrant.new
+    @project = Project.find(params[:project_id])
+    @integrant = User.new
   end
 
   # GET /integrants/1/edit
   def edit
+    @project = @integrant.project
   end
 
   # POST /integrants
   # POST /integrants.json
   def create
-    @integrant = Integrant.new(integrant_params)
-
+    @integrant = User.new(integrant_params)
+    @integrant.project_id = params[:project_id]
     respond_to do |format|
       if @integrant.save
         format.html { redirect_to @integrant, notice: 'Integrant was successfully created.' }
@@ -55,21 +58,21 @@ class IntegrantsController < ApplicationController
   # DELETE /integrants/1
   # DELETE /integrants/1.json
   def destroy
+     @project= @task.project_id
     @integrant.destroy
-    respond_to do |format|
-      format.html { redirect_to integrants_url, notice: 'Integrant was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to integrants_path(project_id: @project)
+    flash[:notice] = 'Task was successfully destroyed.'
+
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_integrant
-      @integrant = Integrant.find(params[:id])
+      @integrant = User.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def integrant_params
-      params.require(:integrant).permit(:username, :password, :name, :email)
+      params.require(:integrant).permit(:email, :encrypted_password)
     end
 end
